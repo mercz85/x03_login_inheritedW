@@ -2,6 +2,8 @@
 
 This project is a practice project for a mobile app architecture.
 
+I will base the authentication from this Andrea tutorial https://www.youtube.com/playlist?list=PLNnAcB93JKV_NIGSneTazb9yMpILapEjo
+
 ## Goals
 
 - Don´t use any state management package.
@@ -12,4 +14,3 @@ This project is a practice project for a mobile app architecture.
 use Form widget and validate it [formValidation]
 authentication with [firebase]
 
-voy x aqui https://www.youtube.com/watch?v=aaKef60iuy8&list=PLNnAcB93JKV_NIGSneTazb9yMpILapEjo&index=3

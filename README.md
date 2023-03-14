@@ -14,3 +14,6 @@ I will base the authentication from this Andrea tutorial https://www.youtube.com
 use Form widget and validate it [formValidation]
 authentication with [firebase]
 
+FEATURE DRIVEN PROJECT
+https://codewithandrea.com/articles/flutter-project-structure/
+

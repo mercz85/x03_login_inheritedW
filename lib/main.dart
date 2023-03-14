@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:x03_architecture/root_page.dart';
 
+import 'auth.dart';
 import 'login_page.dart';
 
 import 'package:firebase_core/firebase_core.dart';
@@ -28,7 +30,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.pink,
       ),
-      home: LoginPage(),
+      home: RootPage(
+        auth: Auth(),
+      ),
     );
   }
 }

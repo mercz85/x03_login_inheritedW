@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:x03_architecture/home_page.dart';
 import 'login_page.dart';
 import 'auth.dart';
 
@@ -17,18 +18,28 @@ class _RootPageState extends State<RootPage> {
 
   @override
   void initState() {
-    String userUId = widget.auth.currentUser();
-    setState(() {
-      _authStatus =
-          userUId.isEmpty ? AuthStatus.notSignedIn : AuthStatus.signedIn;
-    });
     super.initState();
+    //This user is persistent, so we retrieve it when the app starts
+    String? userUId = widget.auth.currentUser();
+    setState(() {
+      if (userUId != null) {
+        _authStatus =
+            userUId.isEmpty ? AuthStatus.notSignedIn : AuthStatus.signedIn;
+      }
+    });
   }
 
   void _onSignedIn() {
     setState(() {
       _authStatus = AuthStatus.signedIn;
     });
+  }
+
+  void _onSignedOut() {
+    setState(() {
+      _authStatus = AuthStatus.notSignedIn;
+    });
+    print('root');
   }
 
   @override
@@ -40,13 +51,7 @@ class _RootPageState extends State<RootPage> {
           onSignedIn: _onSignedIn,
         );
       case AuthStatus.signedIn:
-        return Scaffold(
-          body: SafeArea(
-            child: Container(
-              child: Text('Wellcome'),
-            ),
-          ),
-        );
+        return HomePage(auth: widget.auth, onSignedOut: _onSignedOut);
     }
   }
 }

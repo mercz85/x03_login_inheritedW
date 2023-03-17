@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'auth.dart';
 
+/*
+test@test.com
+123456
+ */
 enum formType { login, register }
 
 class LoginPage extends StatefulWidget {

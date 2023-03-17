@@ -43,6 +43,9 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
+# [.gitignore] My personal secret files to store passwords, etc
+secrets.json
+
 # [firebase] firebase apps ids
 firebase_options.dart
 android/app/google-services.json

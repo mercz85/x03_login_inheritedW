@@ -1,15 +1,28 @@
 import 'package:flutter/material.dart';
 import 'auth.dart';
+import 'auth_provider.dart';
 
 /*
 test@test.com
 123456
  */
+
+class EmailFieldValidator {
+  static String? validate(String value) {
+    return value.isEmpty ? 'email can\'t be empty' : null;
+  }
+}
+
+class PasswordFieldValidator {
+  static String? validate(String value) {
+    return value.isEmpty ? 'password can\'t be empty' : null;
+  }
+}
+
 enum formType { login, register }
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key, required this.auth, required this.onSignedIn});
-  final BaseAuth auth;
+  const LoginPage({super.key, required this.onSignedIn});
   final VoidCallback onSignedIn;
 
   @override
@@ -37,13 +50,14 @@ class _LoginPageState extends State<LoginPage> {
   void validateAndSubmit() async {
     if (validateAndSave()) {
       try {
+        var auth = AuthProvider.of(context)!.auth;
         if (_formType == formType.login) {
           String userId =
-              await widget.auth.signInWithEmailAndPassword(_email, _password);
+              await auth.signInWithEmailAndPassword(_email, _password);
           print('LOGIN: $userId');
         } else {
-          String userId = await widget.auth
-              .createUserWithEmailAndPassword(_email, _password);
+          String userId =
+              await auth.createUserWithEmailAndPassword(_email, _password);
           print('REGISTERED: $userId');
         }
         widget.onSignedIn();
@@ -90,7 +104,7 @@ class _LoginPageState extends State<LoginPage> {
       TextFormField(
         decoration: InputDecoration(labelText: 'email'),
         //[formValidation] use validator in TextFormField
-        validator: (value) => value!.isEmpty ? 'email can´t be empty' : null,
+        validator: (value) => EmailFieldValidator.validate(value!),
         onSaved: (newValue) {
           _email = newValue!;
         },
@@ -98,7 +112,7 @@ class _LoginPageState extends State<LoginPage> {
       TextFormField(
         decoration: InputDecoration(labelText: 'password'),
         obscureText: true,
-        validator: (value) => value!.isEmpty ? 'password can´t be empty' : null,
+        validator: (value) => PasswordFieldValidator.validate(value!),
         onSaved: (newValue) {
           _password = newValue!;
         },

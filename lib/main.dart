@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:x03_architecture/auth_provider.dart';
 import 'package:x03_architecture/root_page.dart';
 
 import 'auth.dart';
@@ -25,13 +26,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.pink,
-      ),
-      home: RootPage(
-        auth: Auth(),
+    return AuthProvider(
+      auth: Auth(),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.pink,
+        ),
+        home: RootPage(),
       ),
     );
   }

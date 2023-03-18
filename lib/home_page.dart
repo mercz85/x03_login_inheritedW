@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:x03_architecture/auth.dart';
 import 'package:x03_architecture/root_page.dart';
 
+import 'auth_provider.dart';
+
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key, required this.auth, required this.onSignedOut})
-      : super(key: key);
-  final BaseAuth auth;
+  const HomePage({Key? key, required this.onSignedOut}) : super(key: key);
   final VoidCallback onSignedOut;
 
-  void _signOut() {
+  void _signOut(BuildContext context) {
     try {
+      var auth = AuthProvider.of(context)!.auth;
+
       auth.signOut();
       onSignedOut();
     } catch (e) {
@@ -24,7 +26,7 @@ class HomePage extends StatelessWidget {
         title: const Text('Wellcome'),
         actions: [
           TextButton(
-              onPressed: _signOut,
+              onPressed: () => _signOut(context),
               child: const Text(
                 'SignOut',
                 style: TextStyle(

@@ -17,3 +17,4 @@ authentication with [firebase]
 FEATURE DRIVEN PROJECT
 https://codewithandrea.com/articles/flutter-project-structure/
 
+leer esto https://ente.io/blog/tech/inherited-widgets/

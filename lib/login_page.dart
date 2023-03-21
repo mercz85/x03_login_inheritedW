@@ -102,6 +102,7 @@ class _LoginPageState extends State<LoginPage> {
   List<Widget> buildInputs() {
     return [
       TextFormField(
+        key: const Key('emailTextFormField'),
         decoration: InputDecoration(labelText: 'email'),
         //[formValidation] use validator in TextFormField
         validator: (value) => EmailFieldValidator.validate(value!),
@@ -110,6 +111,7 @@ class _LoginPageState extends State<LoginPage> {
         },
       ),
       TextFormField(
+        key: const Key('passwordTextFormField'),
         decoration: InputDecoration(labelText: 'password'),
         obscureText: true,
         validator: (value) => PasswordFieldValidator.validate(value!),
@@ -124,6 +126,7 @@ class _LoginPageState extends State<LoginPage> {
     if (_formType == formType.login) {
       return [
         TextButton(
+          key: const Key('signInBtn'),
           style: ButtonStyle(
               elevation: MaterialStateProperty.resolveWith((states) => 4),
               backgroundColor: MaterialStateColor.resolveWith(

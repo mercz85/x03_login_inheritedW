@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:x03_architecture/auth_provider.dart';
 import 'package:x03_architecture/home_page.dart';
 import 'login_page.dart';
-import 'auth.dart';
 
 class RootPage extends StatefulWidget {
   RootPage({Key? key}) : super(key: key);

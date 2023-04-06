@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:x03_architecture/auth.dart';
-import 'package:x03_architecture/root_page.dart';
 
 import 'auth_provider.dart';
 
